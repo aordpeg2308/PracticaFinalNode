@@ -1,0 +1,46 @@
+{
+  "animales": [
+    {
+      "id": "1",
+      "nombre": "Capibara",
+      "nombreCientifico": "Hydrochoerus hydrochaeris",
+      "foto": "https://www.zooplus.es/magazine/wp-content/uploads/2024/02/Capibara-1.jpeg",
+      "alimentacion": "Herbívoro",
+      "origen": "Sudamérica"
+    },
+    {
+      "id": "2",
+      "nombre": "Gato",
+      "nombreCientifico": "Felis catus",
+      "foto": "https://s3.abcstatics.com/abc/www/multimedia/sociedad/2024/07/11/gato-RaZLibek03KjY2lBzGD2qEN-1200x840@diario_abc.jpg",
+      "alimentacion": "Carnívoro",
+      "origen": "Mundial"
+    },
+    {
+      "id": "3",
+      "nombre": "Panda",
+      "nombreCientifico": "Ailuropoda melanoleuca",
+      "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/640px-Grosser_Panda.JPG",
+      "alimentacion": "Herbívoro",
+      "origen": "China"
+    },
+    {
+      "id": "4",
+      "nombre": "Lobo",
+      "nombreCientifico": "Canis lupus",
+      "foto": "https://static.wikia.nocookie.net/reinoanimalia/images/7/74/Lobo_gris.jpg/revision/latest?cb=20121211084415&path-prefix=es",
+      "alimentacion": "Carnívoro",
+      "origen": "Europa, América del Norte"
+    },
+    {
+      "nombre": "Tigre",
+      "nombreCientifico": "Panthera tigris",
+      "foto": "https://zoo.cordoba.es/wp-content/uploads/2021/05/interior-10.jpg",
+      "alimentacion": "Carnívoro",
+      "origen": "Asia",
+      "id": "350cc7e8-4c04-4d90-a716-54249e9a3cc8",
+      "creadoEn": "7/2/2025, 12:10:50",
+      "actualizadoEn": "7/2/2025, 12:10:50"
+    }
+  ]
+}

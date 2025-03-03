@@ -1,0 +1,74 @@
+{
+  "animales": [
+    {
+      "nombre": "Tigre",
+      "nombreCientifico": "Panthera tigris",
+      "foto": "https://www.diariodeavila.es/media/IMG/2020/3FE4A0FE-0C00-D845-4882E17921EB5962.JPG",
+      "alimentacion": "Carnivoro",
+      "origen": "Asia",
+      "id": "c4239b3a-d9ec-4a70-895b-baa603f78410",
+      "creadoEn": "13/2/2025, 10:06:43",
+      "actualizadoEn": "22/2/2025, 17:10:20"
+    },
+    {
+      "nombre": "Capibara",
+      "nombreCientifico": "Hydrochoerus hydrochaeris",
+      "foto": "https://www.zooplus.es/magazine/wp-content/uploads/2024/02/Capibara-1.jpeg",
+      "alimentacion": "Herbivoro",
+      "origen": "Sudamérica",
+      "id": "35a39966-f9b3-4c8d-8e14-b046548d170d",
+      "creadoEn": "13/2/2025, 10:10:16",
+      "actualizadoEn": "13/2/2025, 10:10:16"
+    },
+    {
+      "nombre": "Gato",
+      "nombreCientifico": "Felis catus",
+      "foto": "https://s3.abcstatics.com/abc/www/multimedia/sociedad/2024/07/11/gato-RaZLibek03KjY2lBzGD2qEN-1200x840@diario_abc.jpg",
+      "alimentacion": "Carnivoro",
+      "origen": "Mundial",
+      "id": "e4acee2c-a174-4075-8302-e7ef93632a10",
+      "creadoEn": "13/2/2025, 10:10:57",
+      "actualizadoEn": "13/2/2025, 10:10:57"
+    },
+    {
+      "nombre": "Panda",
+      "nombreCientifico": "Ailuropoda melanoleuca",
+      "foto": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Grosser_Panda.JPG/640px-Grosser_Panda.JPG",
+      "alimentacion": "Herbivoro",
+      "origen": "Asia",
+      "id": "ee9c3763-f7e4-4028-a933-39fd3c2599c0",
+      "creadoEn": "13/2/2025, 10:11:22",
+      "actualizadoEn": "13/2/2025, 10:11:22"
+    },
+    {
+      "nombre": "Panda Rojo",
+      "nombreCientifico": "Ailurus fulgens",
+      "foto": "https://s1.elespanol.com/2017/12/07/ciencia/medio-ambiente/animales-animales_exoticos-proteccion_de_animales_267736208_56805209_1706x640.jpg",
+      "alimentacion": "Herbivoro",
+      "origen": "Asia",
+      "id": "de491ee5-8934-4150-8bc1-e884765dff71",
+      "creadoEn": "22/2/2025, 16:01:11",
+      "actualizadoEn": "22/2/2025, 16:01:11"
+    },
+    {
+      "nombre": "Damán Roquero",
+      "nombreCientifico": "Procavia capensis",
+      "foto": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Rock_Hyrax_%28Procavia_capensis%29_%287042223567%29.jpg",
+      "alimentacion": "Herbivoro",
+      "origen": "Africa",
+      "id": "47f3d0ec-cada-49b1-8f11-27b0bd9e66d3",
+      "creadoEn": "22/2/2025, 18:25:10",
+      "actualizadoEn": "22/2/2025, 18:25:10"
+    },
+    {
+      "nombre": "Lince Iberico",
+      "nombreCientifico": "Lynx pardinus",
+      "foto": "https://imgcom.masterd.es/12/blog/2017/01/37841.jpg",
+      "alimentacion": "Carnivoro",
+      "origen": "Europa",
+      "id": "62fb0093-5941-480e-8fa6-b10ae40a5294",
+      "creadoEn": "22/2/2025, 18:26:14",
+      "actualizadoEn": "22/2/2025, 18:26:14"
+    }
+  ]
+}
