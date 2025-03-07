@@ -1,54 +1,34 @@
-const bodyParser = require("body-parser");
 const animalService = require("../services/animalService");
 
-const obtenerAnimales = (req, res) => {
-    const {alimentacion} = req.query;
-    const {origen} = req.query;
+const obtenerAnimales = async (req, res) => {
+    const { alimentacion, origen } = req.query;
     try {
-        const todosLosAnimales = animalService.obtenerAnimales({alimentacion,origen});
-        res.send({ status: "OK", data: todosLosAnimales });
+        const todosLosAnimales = await animalService.obtenerAnimales({ alimentacion, origen });
+        res.send({ status: "OK", data: todosLosAnimales.data });
     } catch (error) {
-        res.status(error?.status || 500).send({status: "FAILED", data: { error: error?.message || error}})
-        
+        res.status(error?.status || 500).send({ status: "FAILED", data: { error: error?.message || error } });
     }
-    
 };
 
-const obtenerAnimal = (req, res) => {
-    const {
-        params: { animalId },
-    } = req;
+const obtenerAnimal = async (req, res) => {
+    const { animalId } = req.params;
     if (!animalId) {
-
-        res.status(400).send({
-
-            status: "FAILED",
-            data: { error: "Necesitas mandar el id"}
-        })
-        
+        return res.status(400).send({ status: "FAILED", data: { error: "Necesitas mandar el id" } });
     }
     try {
-        const animal = animalService.obtenerAnimal(animalId);
-    res.send({ status: "OK", data: animal });
+        const animal = await animalService.obtenerAnimal(animalId);
+        res.send({ status: "OK", data: animal });
     } catch (error) {
-        res.status(error?.status|| 500).send({status: "FAILED", data: {error: error?.message || error}});
+        res.status(error?.status || 500).send({ status: "FAILED", data: { error: error?.message || error } });
     }
-    
 };
 
-const crearAnimal = (req, res) => {
+const crearAnimal = async (req, res) => {
     const { body } = req;
     if (!body.nombre || !body.nombreCientifico || !body.foto || !body.alimentacion || !body.origen) {
-        res.status(400).send({
-
-            status: "FAILED",
-            data: {
-                error: "Falta uno de los parametros obligatorio"
-                
-            }
-        });
-        
+        return res.status(400).send({ status: "FAILED", data: { error: "Falta uno de los parámetros obligatorios" } });
     }
+
     const nuevoAnimal = {
         nombre: body.nombre,
         nombreCientifico: body.nombreCientifico,
@@ -56,52 +36,39 @@ const crearAnimal = (req, res) => {
         alimentacion: body.alimentacion,
         origen: body.origen,
     };
+
     try {
-        const animalCreado = animalService.crearAnimal(nuevoAnimal);
-    res.status(201).send({ status: "OK", data: animalCreado });
+        const animalCreado = await animalService.crearAnimal(nuevoAnimal);
+        res.status(201).send({ status: "OK", data: animalCreado });
     } catch (error) {
-        res.status(error?.status || 500).send({status: "FAILED",data: {error: error?.message || error}})
+        res.status(error?.status || 500).send({ status: "FAILED", data: { error: error?.message || error } });
     }
-    
 };
 
-const actualizarAnimal = (req, res) => {
-    const {
-        body,
-        params: { animalId },
-    } = req;
+const actualizarAnimal = async (req, res) => {
+    const { body, params: { animalId } } = req;
     if (!animalId) {
-       res.status(400).send({
-        status: "FAILED",
-        data: { error: " El parametro del id no puede estar vacio"},
-       });
+        return res.status(400).send({ status: "FAILED", data: { error: "El parámetro del id no puede estar vacío" } });
     }
     try {
-        const animalActualizado = animalService.actualizarAnimal(animalId, body);
+        const animalActualizado = await animalService.actualizarAnimal(animalId, body);
         res.send({ status: "OK", data: animalActualizado });
     } catch (error) {
-        res.status(error?.status || 500).send({status: "FAILED", data: {error: error?.message || error}});
+        res.status(error?.status || 500).send({ status: "FAILED", data: { error: error?.message || error } });
     }
-   
 };
 
-const eliminarAnimal = (req, res) => {
-    const {
-        params: { animalId },
-    } = req;
+const eliminarAnimal = async (req, res) => {
+    const { animalId } = req.params;
     if (!animalId) {
-        res.status(400).send({
-            status: "FAILED",
-            data: {error: "El id no puede estar vacio"}
-        })
+        return res.status(400).send({ status: "FAILED", data: { error: "El id no puede estar vacío" } });
     }
     try {
-        animalService.eliminarAnimal(animalId);
-    res.status(204).send({ status: "OK" });
+        await animalService.eliminarAnimal(animalId);
+        res.status(204).send({ status: "OK" });
     } catch (error) {
-        res.status(error?.status || 500).send({status: "FAILED", data: { error: error?.message || error}})
+        res.status(error?.status || 500).send({ status: "FAILED", data: { error: error?.message || error } });
     }
-    
 };
 
 module.exports = {

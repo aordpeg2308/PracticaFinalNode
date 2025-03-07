@@ -20,8 +20,8 @@ const obtenerAnimales = async (filterParams = {}) => {
     }
 
     if (filterParams.origen) {
-      filters.push(`origen LIKE ?`);
-      values.push(`%${filterParams.origen}%`);
+      filters.push(`(origen LIKE ? OR origen LIKE ?)`);
+      values.push(`%${filterParams.origen}%`, `%mundial%`);
     }
 
     if (filters.length > 0) {
@@ -90,29 +90,47 @@ const obtenerAnimal = async (animalId) => {
 
 const actualizarAnimal = async (animalId, cambios) => {
   try {
-    const query = 'SELECT * FROM animales WHERE nombre = ? AND id != ?';
-    const [results] = await connection.promise().query(query, [cambios.nombre, animalId]);
+    
+    if (cambios.nombre) {
+      const query = 'SELECT * FROM animales WHERE nombre = ? AND id != ?';
+      const [results] = await connection.promise().query(query, [cambios.nombre, animalId]);
 
-    if (results.length > 0) {
-      throw { status: 400, message: `El animal con el nombre '${cambios.nombre}' ya existe` };
+      if (results.length > 0) {
+        throw { status: 400, message: `El animal con el nombre '${cambios.nombre}' ya existe` };
+      }
     }
 
+    
+    const campos = [];
+    const valores = [];
+
+    Object.keys(cambios).forEach(key => {
+      if (key !== 'id') { 
+        campos.push(`${key} = ?`);
+        valores.push(cambios[key]);
+      }
+    });
+
+    if (campos.length === 0) {
+      throw { status: 400, message: 'No se proporcionaron campos para actualizar' };
+    }
+
+    
+    campos.push('actualizadoEn = ?');
+    const fecha = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    valores.push(fecha);
+
+    
     const updateQuery = `
       UPDATE animales
-      SET nombre = ?, nombreCientifico = ?, alimentacion = ?, origen = ?, foto = ?, actualizadoEn = ?
+      SET ${campos.join(', ')}
       WHERE id = ?
     `;
-    const fecha = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
-    await connection.promise().query(updateQuery, [
-      cambios.nombre,
-      cambios.nombreCientifico,
-      cambios.alimentacion,
-      cambios.origen,
-      cambios.foto,
-      fecha,
-      animalId,
-    ]);
+    valores.push(animalId);
+
+   
+    await connection.promise().query(updateQuery, valores);
 
     return { ...cambios, actualizadoEn: fecha, id: animalId };
   } catch (error) {
